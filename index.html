@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=New+Amsterdam&family=Orbitron:wght@400..900&family=Poppins:wght@200;400;500;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <!-- Form for Input -->
+    <div class="bungkus">
+      <form id="inputForm">
+        <label for="title">Enter Title:</label>
+        <input type="text" id="title" placeholder="Enter title here" />
+        <br /><br />
+        <label for="mainImage">Upload Main Image:</label>
+        <input type="file" id="mainImageInput" accept="image/*" />
+        <br /><br />
+        <label for="backgroundImage">Upload Background Image:</label>
+        <input type="file" id="backgroundImageInput" accept="image/*" />
+        <br /><br />
+        <button type="button" onclick="updateTemplate()">Submit</button>
+      </form>
+      <!-- <form id="inputForm">
+        <label for="title">Enter Title:</label>
+        <input type="text" id="title-2" placeholder="Enter title here">
+        <br><br>
+        <label for="mainImage">Upload Main Image:</label>
+        <input type="file" id="mainImageInput-2" accept="image/*">
+        <br><br>
+        <label for="backgroundImage">Upload Background Image:</label>
+        <input type="file" id="backgroundImageInput-2" accept="image/*">
+        <br><br>
+        <button type="button" onclick="updateTemplate2()">Submit</button>
+    </form> -->
+    </div>
+
+    <!-- Template Design -->
+    <div class="bungkus">
+      <div class="border" id="template">
+        <img id="backgroundImage" src="thunder.png" alt="" class="blur" />
+        <div class="box">
+          <img id="mainImage" src="thunder.png" alt="" />
+          <div class="hp">iPhone</div>
+          <h4 id="titleText">DJ CLOSE TO YOU - FVNKY NIGHT</h4>
+          <div class="ind">
+            <div class="on"></div>
+          </div>
+          <div class="time">
+            <div class="left">00:05</div>
+            <div class="right">03:15</div>
+          </div>
+          <div class="sat">
+            <i class="bi bi-chevron-double-left"></i>
+            <i class="bi bi-pause-circle"></i>
+            <i class="bi bi-chevron-double-right"></i>
+          </div>
+          <div class="vol">
+            <i class="bi bi-volume-down"></i>
+            <div class="long">
+              <div class="hey"></div>
+            </div>
+            <i class="bi bi-volume-up"></i>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="border" id="template-2">
+        <img id="backgroundImage-2" src="thunder.png" alt="" class="blur">
+        <div class="box">
+            <img id="mainImage-2" src="thunder.png" alt="">
+            <div class="hp">iPhone</div>
+            <h4 id="titleText-2">DJ CLOSE TO YOU - FVNKY NIGHT</h4>
+            <div class="ind">
+                <div class="on"></div>
+            </div>
+            <div class="time">
+                <div class="left">00:05</div>
+                <div class="right">03:15</div>
+            </div>
+            <div class="sat">
+                <i class="bi bi-chevron-double-left"></i>
+                <i class="bi bi-pause-circle"></i>
+                <i class="bi bi-chevron-double-right"></i>
+            </div>
+            <div class="vol">
+                <i class="bi bi-volume-down"></i>
+                <div class="long">
+                    <div class="hey"></div>
+                </div>
+                <i class="bi bi-volume-up"></i>
+            </div>
+        </div>
+    </div> -->
+    </div>
+
+    <!-- Button to Download Design -->
+    <div class="bungkus">
+      <button id="downloadBtn" onclick="downloadDesign()">Download Design</button>
+    </div>
+    <!-- <button id="downloadBtn" onclick="downloadDesign2()">Download Design</button> -->
+
+    <script>
+      function updateTemplate() {
+        // Get the input values
+        const title = document.getElementById("title").value;
+        const mainImageFile = document.getElementById("mainImageInput").files[0];
+        const backgroundImageFile = document.getElementById("backgroundImageInput").files[0];
+
+        // Update the title
+        document.getElementById("titleText").textContent = title;
+
+        // Update the main image if one is selected
+        if (mainImageFile) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("mainImage").src = e.target.result;
+          };
+          reader.readAsDataURL(mainImageFile);
+        }
+
+        // Update the background image if one is selected
+        if (backgroundImageFile) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("backgroundImage").src = e.target.result;
+          };
+          reader.readAsDataURL(backgroundImageFile);
+        }
+      }
+      function updateTemplate2() {
+        // Get the input values
+        const title = document.getElementById("title-2").value;
+        const mainImageFile = document.getElementById("mainImageInput-2").files[0];
+        const backgroundImageFile = document.getElementById("backgroundImageInput-2").files[0];
+
+        // Update the title
+        document.getElementById("titleText-2").textContent = title;
+
+        // Update the main image if one is selected
+        if (mainImageFile) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("mainImage-2").src = e.target.result;
+          };
+          reader.readAsDataURL(mainImageFile);
+        }
+
+        // Update the background image if one is selected
+        if (backgroundImageFile) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("backgroundImage-2").src = e.target.result;
+          };
+          reader.readAsDataURL(backgroundImageFile);
+        }
+      }
+
+      function downloadDesign() {
+        const element = document.getElementById("template");
+
+        // Use html2canvas to capture the element
+        html2canvas(element).then((canvas) => {
+          // Create a download link
+          const link = document.createElement("a");
+          link.download = "design.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+      function downloadDesign2() {
+        const element = document.getElementById("template-2");
+
+        // Use html2canvas to capture the element
+        html2canvas(element).then((canvas) => {
+          // Create a download link
+          const link = document.createElement("a");
+          link.download = "design-2.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>
